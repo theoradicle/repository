@@ -68,10 +68,11 @@ while running:
         tail = pygame.Rect(coords[len(coords) - i][0], coords[len(coords) - i][1], 50, 50)
         draw(screen, color, tail)
         if snake.x == tail.x and snake.y == tail.y:
-            pygame.quit()
+            running = False
     draw(screen, (255,0,0), food)
     draw(screen, color, snake)
     clock.tick(60)
     if snake.x > 1920 or snake.x < 0 or snake.y > 1080 or snake.y < 0:
-        pygame.quit()
+        running = False
 pygame.quit()
+print(length)
