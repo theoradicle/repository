@@ -8,7 +8,7 @@ screen_height = 1080
 direction="south"
 coords=[(900,0),(900,50)]
 snake = pygame.Rect(900,100, 50, 50)
-food = pygame.Rect(random.randint(0,1920) // 50 * 50, random.randint(0,1080) // 50 * 50, 50, 50)
+food = pygame.Rect(random.randint(0,1899) // 50 * 50, random.randint(0,1049) // 50 * 50, 50, 50)
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 ticks=10
@@ -17,33 +17,44 @@ length=0
 lengthlist=[]
 color=(255,255,255)
 seconds=0
+keypressed=False
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     key = pygame.key.get_pressed()
-    if key[pygame.K_a] and not direction == "east":
+    if key[pygame.K_a] and not direction == "east" and not keypressed:
         direction="west"
-    if key[pygame.K_d] and not direction == "west":
+        keypressed=True
+    if key[pygame.K_d] and not direction == "west" and not keypressed:
         direction="east"
-    if key[pygame.K_w] and not direction == "south":
+        keypressed = True
+    if key[pygame.K_w] and not direction == "south" and not keypressed:
         direction="north"
-    if key[pygame.K_s] and not direction =="north":
+        keypressed = True
+    if key[pygame.K_s] and not direction =="north" and not keypressed:
         direction="south"
-    if key[pygame.K_e]:
+        keypressed = True
+    if key[pygame.K_e] and not keypressed:
         length+=1
+        lengthlist.append(length)
+        keypressed = True
     if ticks==0:
         add=snake.x,snake.y
         coords.append(add)
         if direction == "north":
             snake.y+=-50
+            keypressed = False
         if direction == "south":
             snake.y+=50
+            keypressed = False
         if direction == "east":
             snake.x+=50
+            keypressed = False
         if direction == "west":
             snake.x+=-50
+            keypressed = False
         ticks=10
     else:
         ticks+=-1
