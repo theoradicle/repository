@@ -1,7 +1,8 @@
+import math
 equation = input("Enter equation: ")
-botrange = -50
-toprange =  50
-stretch = 1
+botrange = -100
+toprange =  100
+stretch = 5
 shiftx = 0
 shifty = 0
 if botrange == "":
@@ -42,6 +43,8 @@ while running:
         shiftx += -1
     if key[pygame.K_a]:
         shiftx += 1
+        botrange += shiftx
+        toprange += shiftx
     if key[pygame.K_w]:
         shifty += 1
     if key[pygame.K_s]:
