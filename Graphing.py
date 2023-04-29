@@ -1,6 +1,6 @@
 equation = input("Enter equation: ")
-botrange = -100
-toprange =  100
+botrange = -50
+toprange =  50
 stretch = 1
 shiftx = 0
 shifty = 0
@@ -18,13 +18,10 @@ def plugin(b):
     return float(eval(equation.replace("x","("+str(b)+")")))
 plot = []
 for i in range(botrange*200,toprange*200):
-    if i == 0:
-        try:
-            plot.append((i / 200, -plugin(i / 200)))
-        except:
-            pass
-    else:
-        plot.append((i/100,-plugin(i/100)))
+    try:
+        plot.append((i / 200, -plugin(i / 200)))
+    except:
+        pass
 import pygame
 pygame.init()
 screen_width = 500
