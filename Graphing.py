@@ -52,10 +52,10 @@ while running:
     screen.fill((0, 0, 0))
     xaxis = pygame.Rect(shiftx-2500, 150+shifty, 5000, 1)
     yaxis = pygame.Rect(250+shiftx,shifty-1500,1,3000)
-    for i in range(-500,500):
+    for i in range(-500,501):
         xticks = pygame.Rect(250+0+i*5*stretch+shiftx,147+shifty,1,6)
         pygame.draw.rect(screen, (50,50,50), xticks)
-    for i in range(-300,3001):
+    for i in range(-300,301):
         yticks = pygame.Rect(247+shiftx,150+0+i*5*stretch+shifty,6,1)
         pygame.draw.rect(screen, (50,50,50), yticks)
     pygame.draw.rect(screen, (50,50,50), xaxis)
